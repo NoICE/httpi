@@ -17,7 +17,7 @@ module HTTPI
     ADAPTERS = {
       :httpclient => { :class => HTTPClient,    :dependencies => ["httpclient"] },
       :curb       => { :class => Curb,          :dependencies => ["curb"] },
-      :net_http   => { :class => NetHTTP,       :dependencies => ["net/https", "net/ntlm_http"] },
+      :net_http   => { :class => NetHTTP,       :dependencies => ["net/https"] },
       :em_http    => { :class => EmHttpRequest, :dependencies => ["fiber", "em-synchrony/em-http", "em-http"] }
     }
 
