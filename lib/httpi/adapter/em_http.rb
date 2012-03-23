@@ -89,7 +89,6 @@ module HTTPI
         setup_proxy(request, options) if request.proxy
         setup_http_auth(request, options) if request.auth.http?
         setup_ssl_auth(request.auth.ssl, options) if request.auth.ssl?
-        raise "NTLM auth unsupported" if request.auth.ntlm?
 
         start_time = Time.now
         respond_with yield(client, options), start_time
