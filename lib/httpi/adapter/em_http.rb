@@ -85,7 +85,7 @@ module HTTPI
 
       def _request(request)
         options = client_options(request)
-        client = EventMachine::HttpRequest.new("#{request.url.scheme}://#{request.url.host}:#{request.url.port}#{request.url.path}")
+        client = EventMachine::HttpRequest.new("#{request.url.scheme}://#{request.url.host}:#{request.url.port}#{request.url.path}", options)
         setup_proxy(request, options) if request.proxy
         setup_http_auth(request, options) if request.auth.http?
         setup_ssl_auth(request.auth.ssl, options) if request.auth.ssl?
