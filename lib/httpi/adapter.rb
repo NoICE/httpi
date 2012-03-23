@@ -29,7 +29,7 @@ module HTTPI
         return @adapter = nil if adapter.nil?
 
         validate_adapter! adapter
-        load_adapter adapter
+        load_dependencies adapter
         @adapter = adapter
       end
 
@@ -52,7 +52,7 @@ module HTTPI
       def default_adapter
         LOAD_ORDER.each do |adapter|
           begin
-            load_adapter adapter
+            load_dependencies adapter
             return adapter
           rescue LoadError
             next
@@ -60,8 +60,8 @@ module HTTPI
         end
       end
 
-      def load_adapter(adapter)
-        require ADAPTERS[adapter][:require]
+      def load_dependencies(adapter)
+        ADAPTERS[adapter][:dependencies].each { |dependency| require dependency }
       end
 
     end
