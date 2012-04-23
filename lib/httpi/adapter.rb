@@ -1,6 +1,7 @@
 require "httpi/adapter/httpclient"
 require "httpi/adapter/curb"
 require "httpi/adapter/net_http"
+require "httpi/adapter/net_http_persistent"
 
 module HTTPI
 
@@ -11,15 +12,17 @@ module HTTPI
   # * httpclient
   # * curb
   # * net/http
+  # * net/http/persistent
   module Adapter
 
     ADAPTERS = {
       :httpclient => { :class => HTTPClient, :require => "httpclient" },
       :curb       => { :class => Curb,       :require => "curb" },
-      :net_http   => { :class => NetHTTP,    :require => "net/https" }
+      :net_http   => { :class => NetHTTP,    :require => "net/https" },
+      :net_http_persistent   => { :class => NetHTTPPersistent,    :require => "net/http/persistent" }
     }
 
-    LOAD_ORDER = [:httpclient, :curb, :net_http]
+    LOAD_ORDER = [:httpclient, :curb, :net_http, :net_http_persistent]
 
     class << self
 

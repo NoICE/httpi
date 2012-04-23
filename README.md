@@ -103,11 +103,12 @@ It currently contains adapters for:
 * [httpclient](http://rubygems.org/gems/httpclient) ~> 2.1.5
 * [curb](http://rubygems.org/gems/curb) ~> 0.7.8
 * [net/http](http://ruby-doc.org/stdlib/libdoc/net/http/rdoc)
+* [net-http-persistent](http://docs.seattlerb.org/net-http-persistent/)
 
 You can manually specify the adapter to use via:
 
 ``` ruby
-HTTPI.adapter = :curb  # or one of [:httpclient, :net_http]
+HTTPI.adapter = :curb  # or one of [:httpclient, :net_http, :net_http_persistent]
 ```
 
 If you don't specify which adapter to use, HTTPI try to load HTTPClient, then Curb and finally NetHTTP.
